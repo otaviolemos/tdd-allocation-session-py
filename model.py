@@ -4,10 +4,6 @@ from datetime import date
 from typing import Optional, List, Set
 
 
-class OutOfStock(Exception):
-    pass
-
-
 @dataclass(frozen=True)
 class OrderLine:
     orderid: str
@@ -59,3 +55,6 @@ class Batch:
 
     def can_allocate(self, line: OrderLine) -> bool:
         return self.sku == line.sku and self.available_quantity >= line.qty
+    
+def allocate(line: OrderLine, batches: List[Batch]):
+    allocatable_batches = (b for b in sorted(batches) if b.can_allocate(line))
