@@ -2,3 +2,5 @@
 2 - should prefer earlier batches
 3 - should return allocated batch reference
 4 - should return out of stock error if cannot allocate
+
+✅
